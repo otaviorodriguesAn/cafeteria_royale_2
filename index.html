@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cafeteria Royale — Um espaço moderno e acolhedor para cafés especiais, doces artesanais e bons momentos.">
+    
+     
+
+    <link rel="icon" type="img/png" href="../resources/static/img/logo.png">
+    <title>Cafeteria Royale</title>
+
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+     <link rel="stylesheet" href="static/css/style.css">
+
+    <style>
+        :root {
+            --cafe: #5b3a29;
+            --dourado: #c99a5b;
+            --creme: #f8f3ec;
+            --escuro: #211812;
+            --branco: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--creme);
+            color: var(--escuro);
+        }
+
+        .navbar {
+            background: rgba(33, 24, 18, 0.97) !important;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            color: white !important;
+            font-size: 1.35rem;
+        }
+
+        .navbar-brand span {
+            color: var(--dourado);
+        }
+
+        .nav-link {
+            color: white !important;
+            margin: 0 5px;
+        }
+
+        .nav-link:hover {
+            color: var(--dourado) !important;
+        }
+
+        .hero {
+            min-height: 72vh;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, .72),
+                    rgba(0, 0, 0, .25)
+                ),
+                url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1800&q=90")
+                center/cover;
+
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.7rem, 7vw, 5.5rem);
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+        }
+
+        .btn-royale {
+            background: var(--dourado);
+            color: var(--escuro);
+            border: 0;
+            font-weight: 700;
+        }
+
+        .btn-royale:hover {
+            background: #e0b577;
+            color: var(--escuro);
+        }
+
+        .section {
+            padding: 75px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-weight: 800;
+        }
+
+        .section-title span {
+            color: var(--dourado);
+            font-weight: 700;
+        }
+
+        .carousel-item img {
+            height: 520px;
+            object-fit: cover;
+            border-radius: 22px;
+        }
+
+        .carousel {
+            border-radius: 22px;
+            overflow: hidden;
+        }
+
+        .card-royale {
+            height: 100%;
+            border: 0;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+            background: white;
+        }
+
+        .card-royale img {
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .card-royale .card-body {
+            padding: 25px;
+        }
+
+        .timeline {
+            border-left: 3px solid var(--dourado);
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+        }
+
+        .timeline-item h3 {
+            font-weight: 800;
+        }
+
+        .timeline-image {
+            width: 100%;
+            max-width: 600px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+
+        .map {
+            width: 100%;
+            height: 430px;
+            border: 0;
+            border-radius: 20px;
+        }
+
+        footer {
+            background: var(--escuro);
+            color: #eee;
+            padding: 45px 0;
+            margin-top: 40px;
+        }
+
+        .badge-royale {
+            background: var(--dourado);
+            color: var(--escuro);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+
+            <div class="container">
+
+                <a class="navbar-brand" href="index.html">
+                    ☕ Cafeteria <span>Royale</span>
+                </a>
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <div class="collapse navbar-collapse" id="menu">
+
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="bi bi-house-fill"></i>
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="pedidos.html">
+                                <i class="bi bi-bag-fill"></i>
+                                Pedidos
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="produtos.html">
+                                <i class="bi bi-cup-hot-fill"></i>
+                                Produtos
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">
+                                <i class="bi bi-person-fill"></i>
+                                Login
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="container">
+
+            <span class="badge badge-royale mb-3">
+                CAFÉ • SABOR • EXPERIÊNCIA
+            </span>
+
+            <h1>
+                Bem-vindo à<br>
+                Cafeteria Royale
+            </h1>
+
+            <p>
+                Um ambiente moderno e acolhedor onde cafés especiais,
+                doces artesanais e bons momentos se encontram.
+            </p>
+
+            <a href="produtos.html" class="btn btn-royale btn-lg px-4">
+                Conheça nosso cardápio
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CARROSSEL -->
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span>Explore a Royale</span>
+
+                <h2>
+                    Nosso ambiente
+                </h2>
+
+                <p>
+                    Um espaço pensado para café, encontros,
+                    estudos e momentos especiais.
+                </p>
+
+            </div>
+
+            <div
+                id="royaleCarousel"
+                class="carousel slide shadow"
+                data-bs-ride="carousel">
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=90"
+                            class="d-block w-100"
+                            alt="Ambiente da cafeteria">
+                    </div>
+
+                    <div class="carousel-item">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1600&q=90"
+                            class="d-block w-100"
+                            alt="Mesa com café">
+
+                    </div>
+
+                    <div class="carousel-item">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=90"
+                            class="d-block w-100"
+                            alt="Café preparado">
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#royaleCarousel"
+                    data-bs-slide="prev">
+
+                    <span class="carousel-control-prev-icon"></span>
+
+                </button>
+
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#royaleCarousel"
+                    data-bs-slide="next">
+
+                    <span class="carousel-control-next-icon"></span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HISTÓRIA -->
+    <section class="section bg-white" id="historia">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span>Nossa história</span>
+
+                <h2>
+                    Como tudo começou
+                </h2>
+
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+                    <h3>
+                        2015 — O início
+                    </h3>
+
+                    <p>
+                        Tudo começou em 2015 com o sonho de criar
+                        um lugar onde o café premium pudesse ser
+                        combinado com acolhimento, qualidade e uma
+                        experiência memorável.
+                    </p>
+
+                    <img
+                        class="timeline-image"
+                        src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=85"
+                        alt="Primeira loja da cafeteria">
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <h3>
+                        2017 — Expansão e reconhecimento
+                    </h3>
+
+                    <p>
+                        Com a crescente demanda, expandimos nosso
+                        espaço e investimos em equipamentos para
+                        melhorar o preparo de cada xícara.
+                    </p>
+
+                    <img
+                        class="timeline-image"
+                        src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=85"
+                        alt="Ambiente da cafeteria">
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <h3>
+                        2019 — Novos produtos
+                    </h3>
+
+                    <p>
+                        Além dos cafés especiais, passamos a oferecer
+                        bolos artesanais, pães frescos e tortas
+                        preparadas com cuidado.
+                    </p>
+
+                    <img
+                        class="timeline-image"
+                        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85"
+                        alt="Produtos artesanais">
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <h3>
+                        2022 — Transformação digital
+                    </h3>
+
+                    <p>
+                        Criamos uma experiência de pedidos online
+                        para aproximar a cafeteria dos clientes e
+                        facilitar o acesso aos produtos.
+                    </p>
+
+                    <img
+                        class="timeline-image"
+                        src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=900&q=85"
+                        alt="Tecnologia na cafeteria">
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <h3>
+                        2024 — Presente e futuro
+                    </h3>
+
+                    <p>
+                        Seguimos evoluindo, mantendo a essência
+                        artesanal e buscando novas formas de tornar
+                        cada visita especial.
+                    </p>
+
+                    <img
+                        class="timeline-image"
+                        src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85"
+                        alt="Cafeteria Royale atualmente">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MEMORIAL DO CAFÉ -->
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span>Memorial do café</span>
+
+                <h2>
+                    Uma bebida com história
+                </h2>
+
+            </div>
+
+            <div class="row g-4">
+
+
+                <div class="col-md-4">
+
+                    <div class="card card-royale">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=900&q=85"
+                            alt="Grãos de café">
+
+                        <div class="card-body">
+
+                            <h3>
+                                Dos grãos à xícara
+                            </h3>
+
+                            <p>
+                                O café percorre uma jornada de cultivo,
+                                seleção, torra e preparo até chegar à xícara.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card card-royale">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=900&q=85"
+                            alt="Preparo de café">
+
+                        <div class="card-body">
+
+                            <h3>
+                                Tradição e preparo
+                            </h3>
+
+                            <p>
+                                Cada método revela aromas e características
+                                diferentes, valorizando a identidade do café.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card card-royale">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&w=900&q=85"
+                            alt="Café servido">
+
+                        <div class="card-body">
+
+                            <h3>
+                                Experiência Royale
+                            </h3>
+
+                            <p>
+                                Na Royale, a história do café encontra
+                                um ambiente moderno, confortável e acolhedor.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CTA -->
+    <section class="section text-center">
+
+        <div class="container">
+
+            <h2>
+                Pronto para experimentar?
+            </h2>
+
+            <p>
+                Confira nossos produtos e escolha seu favorito.
+            </p>
+
+            <a
+                href="produtos.html"
+                class="btn btn-royale btn-lg">
+
+                Ver produtos
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="container text-center">
+
+            <h4>
+                Cafeteria Royale
+            </h4>
+
+            <p>
+                Um espaço moderno para transformar cada café
+                em uma experiência especial.
+            </p>
+
+            <div class="mb-3">
+
+                <a href="index.html" class="text-white mx-2">
+                    Home
+                </a>
+
+                <a href="pedidos.html" class="text-white mx-2">
+                    Pedidos
+                </a>
+
+                <a href="produtos.html" class="text-white mx-2">
+                    Produtos
+                </a>
+
+                <a href="login.html" class="text-white mx-2">
+                    Login
+                </a>
+
+            </div>
+
+            <small>
+                © 2026 Cafeteria Royale — Projeto acadêmico.
+            </small>
+
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

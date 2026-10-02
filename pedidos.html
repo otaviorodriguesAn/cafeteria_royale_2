@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos — Cafeteria Royale</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        /* ==============================
+           CONFIGURAÇÕES GERAIS
+        ============================== */
+        :root {
+            --marrom: #211812;
+            --marrom-claro: #5b3a29;
+            --dourado: #c99a5b;
+            --dourado-claro: #e0b577;
+            --creme: #f8f3ec;
+            --branco: #ffffff;
+            --cinza: #6c625c;
+            --verde: #198754;
+            --vermelho: #dc3545;
+            --azul: #0d6efd;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--creme);
+            color: var(--marrom);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* ==============================
+           NAVBAR
+        ============================== */
+        .navbar {
+            background: var(--marrom) !important;
+            padding: 15px 0;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, .15);
+        }
+
+        .navbar-brand {
+            color: var(--branco) !important;
+            font-size: 1.35rem;
+            font-weight: 800;
+        }
+
+        .navbar-brand span {
+            color: var(--dourado);
+        }
+
+        .nav-link {
+            color: var(--branco) !important;
+            font-weight: 600;
+            margin-left: 10px;
+            transition: .3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--dourado) !important;
+        }
+
+        /* ==============================
+           ÁREA PRINCIPAL
+        ============================== */
+        main {
+            min-height: 650px;
+            padding-top: 50px;
+            padding-bottom: 70px;
+        }
+
+        .order-box {
+            max-width: 1150px;
+            margin: 30px auto;
+            background: var(--branco);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .10);
+        }
+
+        .order-header {
+            border-bottom: 1px solid #e7ddd2;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+
+        .order-header h1 {
+            font-weight: 800;
+            color: var(--marrom);
+        }
+
+        .order-header p {
+            color: var(--cinza);
+        }
+
+        /* ==============================
+           BADGE
+        ============================== */
+        .badge-royale {
+            display: inline-block;
+            background: var(--dourado);
+            color: var(--marrom);
+            font-weight: 800;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: .75rem;
+        }
+
+        /* ==============================
+           CARDS DE RESUMO
+        ============================== */
+        .summary-card {
+            border: none;
+            border-radius: 18px;
+            padding: 22px;
+            height: 100%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .07);
+            background: var(--creme);
+        }
+
+        .summary-card i {
+            font-size: 30px;
+            color: var(--dourado);
+        }
+
+        .summary-card h3 {
+            font-weight: 800;
+            margin-top: 10px;
+            margin-bottom: 3px;
+        }
+
+        .summary-card p {
+            color: var(--cinza);
+            margin: 0;
+        }
+
+        /* ==============================
+           PEDIDO ATUAL
+        ============================== */
+        .current-order {
+            background: linear-gradient(135deg, #f8f3ec, #fff);
+            border: 1px solid #eadbca;
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 35px;
+        }
+
+        .current-order h3 {
+            font-weight: 800;
+        }
+
+        .product-name {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--marrom-claro);
+        }
+
+        .price {
+            color: var(--verde);
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        /* ==============================
+           BOTÕES
+        ============================== */
+        .btn-royale {
+            background: var(--dourado);
+            color: var(--marrom);
+            border: none;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 10px 18px;
+            transition: .3s;
+        }
+
+        .btn-royale:hover {
+            background: var(--dourado-claro);
+            color: var(--marrom);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-royale {
+            border: 2px solid var(--dourado);
+            color: var(--marrom);
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 9px 18px;
+        }
+
+        .btn-outline-royale:hover {
+            background: var(--dourado);
+            color: var(--marrom);
+        }
+
+        /* ==============================
+           TABELA
+        ============================== */
+        .table-container {
+            margin-top: 40px;
+        }
+
+        .table-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .table-title h3 {
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .table-responsive {
+            border-radius: 15px;
+            overflow-x: auto;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
+        }
+
+        .table {
+            margin: 0;
+            min-width: 900px;
+            vertical-align: middle;
+        }
+
+        .table thead th {
+            background: var(--marrom);
+            color: var(--branco);
+            padding: 15px;
+            white-space: nowrap;
+        }
+
+        .table tbody td {
+            padding: 15px;
+        }
+
+        .table tbody tr:hover {
+            background: #fffaf4;
+        }
+
+        /* ==============================
+           STATUS
+        ============================== */
+        .status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: .78rem;
+            font-weight: 700;
+        }
+
+        .status-confirmado {
+            background: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .status-pendente {
+            background: #fff3cd;
+            color: #664d03;
+        }
+
+        .status-cancelado {
+            background: #f8d7da;
+            color: #842029;
+        }
+
+        /* ==============================
+           ÁREA SEM PEDIDOS
+        ============================== */
+        .empty-orders {
+            text-align: center;
+            padding: 45px 20px;
+            background: var(--creme);
+            border-radius: 18px;
+        }
+
+        .empty-orders i {
+            font-size: 55px;
+            color: var(--dourado);
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+        footer {
+            background: var(--marrom);
+            color: var(--branco);
+            padding: 45px 0;
+        }
+
+        footer h4 {
+            font-weight: 800;
+        }
+
+        footer p {
+            color: #ddd3cb;
+        }
+
+        /* ==============================
+           RESPONSIVIDADE
+        ============================== */
+        @media (max-width: 768px) {
+            .order-box {
+                padding: 25px 18px;
+                margin: 20px auto;
+            }
+
+            .table-title {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .order-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                ☕ Cafeteria <span>Royale</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-fill"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="pedidos.html">
+                            <i class="bi bi-bag-fill"></i> Pedidos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produtos.html">
+                            <i class="bi bi-cup-hot-fill"></i> Produtos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="bi bi-person-fill"></i> Login
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <main class="container">
+        <div class="order-box" id="area"></div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container text-center">
+            <h4>☕ Cafeteria Royale</h4>
+            <p>Um espaço moderno para transformar cada café em uma experiência especial.</p>
+            <small>© 2026 Cafeteria Royale — Projeto acadêmico.</small>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const usuario = localStorage.getItem("royaleUsuario");
+        const produtoAtual = localStorage.getItem("royaleProduto");
+        const area = document.getElementById("area");
+
+        const produtos = {
+            "Café Espresso": { preco: 7.90, categoria: "Cafés" },
+            "Cappuccino Royale": { preco: 12.90, categoria: "Cafés" },
+            "Café Gelado": { preco: 14.90, categoria: "Cafés" },
+            "Bolo de Chocolate": { preco: 13.90, categoria: "Doces" },
+            "Torta Artesanal": { preco: 15.90, categoria: "Doces" },
+            "Doce Royale": { preco: 11.90, categoria: "Doces" },
+            "Combo Royale": { preco: 24.90, categoria: "Delivery" },
+            "Combo Café + Bolo": { preco: 27.90, categoria: "Delivery" },
+            "Box Royale": { preco: 39.90, categoria: "Delivery" }
+        };
+
+        function escaparHTML(texto) {
+            const div = document.createElement("div");
+            div.textContent = texto || "";
+            return div.innerHTML;
+        }
+
+        function obterPedidos() {
+            const dados = localStorage.getItem("royalePedidos");
+            return dados ? JSON.parse(dados) : [];
+        }
+
+        function salvarPedidos(pedidos) {
+            localStorage.setItem("royalePedidos", JSON.stringify(pedidos));
+        }
+
+        function formatarPreco(valor) {
+            return Number(valor).toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            });
+        }
+
+        function gerarId() {
+            return "ROY-" + Date.now().toString().slice(-6);
+        }
+
+        function criarPedido() {
+            if (!produtoAtual) return;
+
+            const pedidos = obterPedidos();
+            const existe = pedidos.some(
+                pedido => pedido.produto === produtoAtual && pedido.status === "Pendente"
+            );
+
+            if (existe) return;
+
+            const dadosProduto = produtos[produtoAtual] || { preco: 0, categoria: "Produto" };
+
+            const novoPedido = {
+                id: gerarId(),
+                data: new Date().toLocaleDateString("pt-BR"),
+                produto: produtoAtual,
+                categoria: dadosProduto.categoria,
+                quantidade: 1,
+                preco: dadosProduto.preco,
+                total: dadosProduto.preco,
+                pagamento: "A definir",
+                status: "Pendente"
+            };
+
+            pedidos.push(novoPedido);
+            salvarPedidos(pedidos);
+        }
+
+        function atualizarPedidos() {
+            carregarPagina();
+        }
+
+        function alterarStatusPedido(id, novoStatus) {
+            const pedidos = obterPedidos();
+            const index = pedidos.findIndex(p => p.id === id);
+            if (index !== -1) {
+                pedidos[index].status = novoStatus;
+                salvarPedidos(pedidos);
+                carregarPagina();
+            }
+        }
+
+        function carregarPagina() {
+            if (!usuario) {
+                area.innerHTML = `
+                    <div class="text-center">
+                        <i class="bi bi-lock-fill" style="font-size:60px; color:#c99a5b;"></i>
+                        <h1 class="mt-3">Área exclusiva</h1>
+                        <p class="text-muted">Faça login para acessar seus pedidos da Cafeteria Royale.</p>
+                        <a href="login.html" class="btn btn-royale mt-3">
+                            <i class="bi bi-person-fill"></i> Fazer login
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            criarPedido();
+
+            const pedidos = obterPedidos();
+            const totalPedidos = pedidos.length;
+            const totalConfirmados = pedidos.filter(p => p.status === "Confirmado").length;
+            const totalPendentes = pedidos.filter(p => p.status === "Pendente").length;
+
+            area.innerHTML = `
+                <!-- CABEÇALHO -->
+                <div class="order-header">
+                    <span class="badge-royale">
+                        <i class="bi bi-person-check-fill"></i> CLIENTE
+                    </span>
+                    <h1 class="mt-3">Olá, ${escaparHTML(usuario)}!</h1>
+                    <p>Bem-vindo à área de pedidos da Cafeteria Royale.</p>
+                </div>
+
+                <!-- RESUMO -->
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="summary-card">
+                            <i class="bi bi-bag-check-fill"></i>
+                            <h3>${totalPedidos}</h3>
+                            <p>Total de pedidos</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="summary-card">
+                            <i class="bi bi-hourglass-split"></i>
+                            <h3>${totalPendentes}</h3>
+                            <p>Pedidos pendentes</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="summary-card">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <h3>${totalConfirmados}</h3>
+                            <p>Pedidos confirmados</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PEDIDO ATUAL -->
+                ${produtoAtual ? `
+                    <div class="current-order">
+                        <h3><i class="bi bi-bag-check-fill"></i> Pedido atual</h3>
+                        <hr>
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <div class="product-name">${escaparHTML(produtoAtual)}</div>
+                                <p class="text-muted mb-1">Pedido realizado através do cardápio digital.</p>
+                                <span class="badge bg-warning text-dark">Pendente</span>
+                            </div>
+                            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                <div class="price">
+                                    ${produtos[produtoAtual] ? formatarPreco(produtos[produtoAtual].preco) : "A consultar"}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ` : ""}
+
+                <!-- TABELA -->
+                <div class="table-container">
+                    <div class="table-title">
+                        <h3><i class="bi bi-list-check"></i> Histórico de pedidos</h3>
+                        <div>
+                            <button class="btn btn-outline-royale me-2" onclick="atualizarPedidos()">
+                                <i class="bi bi-arrow-clockwise"></i> Atualizar
+                            </button>
+                            <a href="produtos.html" class="btn btn-royale">
+                                <i class="bi bi-plus-circle"></i> Novo pedido
+                            </a>
+                        </div>
+                    </div>
+
+                    ${pedidos.length > 0 ? `
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nº Pedido</th>
+                                        <th>Data</th>
+                                        <th>Produto</th>
+                                        <th>Categoria</th>
+                                        <th>Qtd.</th>
+                                        <th>Preço</th>
+                                        <th>Total</th>
+                                        <th>Pagamento</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${pedidos.map(pedido => {
+                                        let classeStatus = "status-pendente";
+                                        if (pedido.status === "Confirmado") classeStatus = "status-confirmado";
+                                        if (pedido.status === "Cancelado") classeStatus = "status-cancelado";
+
+                                        return `
+                                            <tr>
+                                                <td><strong>${pedido.id}</strong></td>
+                                                <td>${pedido.data}</td>
+                                                <td>${escaparHTML(pedido.produto)}</td>
+                                                <td>${pedido.categoria}</td>
+                                                <td>${pedido.quantidade}</td>
+                                                <td>${formatarPreco(pedido.preco)}</td>
+                                                <td><strong>${formatarPreco(pedido.total)}</strong></td>
+                                                <td>${pedido.pagamento}</td>
+                                                <td><span class="status ${classeStatus}">${pedido.status}</span></td>
+                                                <td>
+                                                    ${pedido.status === "Pendente" ? `
+                                                        <button class="btn btn-sm btn-success me-1" onclick="alterarStatusPedido('${pedido.id}', 'Confirmado')">
+                                                            <i class="bi bi-check-lg"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-danger" onclick="alterarStatusPedido('${pedido.id}', 'Cancelado')">
+                                                            <i class="bi bi-x-lg"></i>
+                                                        </button>
+                                                    ` : "-"}
+                                                </td>
+                                            </tr>
+                                        `;
+                                    }).join("")}
+                                </tbody>
+                            </table>
+                        </div>
+                    ` : `
+                        <div class="empty-orders">
+                            <i class="bi bi-bag-x"></i>
+                            <h4 class="mt-3">Nenhum pedido encontrado</h4>
+                            <p class="text-muted">Você ainda não realizou nenhum pedido na Cafeteria Royale.</p>
+                        </div>
+                    `}
+                </div>
+            `;
+        }
+
+        document.addEventListener("DOMContentLoaded", carregarPagina);
+    </script>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

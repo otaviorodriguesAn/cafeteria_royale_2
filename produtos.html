@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Produtos — Cafeteria Royale</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --cafe: #5b3a29;
+            --dourado: #c99a5b;
+            --creme: #f8f3ec;
+            --escuro: #211812;
+        }
+
+        body {
+            margin: 0;
+            background: var(--creme);
+            color: var(--escuro);
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background: var(--escuro) !important;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            color: white !important;
+        }
+
+        .navbar-brand span {
+            color: var(--dourado);
+        }
+
+        .nav-link {
+            color: white !important;
+        }
+
+        .nav-link:hover {
+            color: var(--dourado) !important;
+        }
+
+        .section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: var(--dourado);
+            font-weight: bold;
+        }
+
+        .card-product {
+            height: 100%;
+            border: none;
+            overflow: hidden;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+        }
+
+        .card-product img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .card-product .card-body {
+            padding: 25px;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--cafe);
+        }
+
+        .btn-royale {
+            background: var(--dourado);
+            color: var(--escuro);
+            font-weight: bold;
+            border: none;
+        }
+
+        .btn-royale:hover {
+            background: #e0b577;
+        }
+
+        footer {
+            background: var(--escuro);
+            color: white;
+            padding: 45px 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">
+                ☕ Cafeteria <span>Royale</span>
+            </a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-fill"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="pedidos.html">
+                            <i class="bi bi-bag-fill"></i>
+                            Pedidos
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="produtos.html">
+                            <i class="bi bi-cup-hot-fill"></i>
+                            Produtos
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="bi bi-person-fill"></i>
+                            Login
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- PRODUTOS -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span>Cardápio digital</span>
+
+                <h1>
+                    Produtos Royale
+                </h1>
+
+                <p>
+                    Escolha para consumir no balcão,
+                    na mesa ou receber em casa.
+                </p>
+
+            </div>
+
+
+            <!-- CAFÉS -->
+
+            <h2 class="mb-4">
+                 Cafés
+            </h2>
+
+            <div class="row g-4 mb-5">
+
+
+                <!-- PRODUTO 1 -->
+
+                <div class="col-md-4">
+
+                    <div class="card card-product">
+
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=85"
+                            alt="Café espresso">
+                        <div class="card-body">
+
+                            <h3>
+                                Café Espresso
+                            </h3>
+
+                            <p>
+                                Café intenso e aromático,
+                                preparado na hora.
+                            </p>
+
+                            <div class="price">
+                                R$ 7,90
+                            </div>
+
+                            <button class="btn btn-royale w-100 mt-3" onclick="selecionar('Café Espresso')">
+
+                                Selecionar
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUTO 2 -->
+
+                <div class="col-md-4">
+
+                    <div class="card card-product">
+
+                        <img src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=800&q=85"
+                            alt="Cappuccino">
+
+                        <div class="card-body">
+
+                            <h3>
+                                Cappuccino Royale
+                            </h3>
+
+                            <p>
+                                Café cremoso com leite
+                                vaporizado e espuma.
+                            </p>
+
+                            <div class="price">
+                                R$ 12,90
+                            </div>
+
+                            <button class="btn btn-royale w-100 mt-3" onclick="selecionar('Cappuccino Royale')">
+
+                                Selecionar
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUTO 3 -->
+
+                <div class="col-md-4">
+
+                    <div class="card card-product">
+
+                        <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=85"
+                            alt="Café gelado">
+
+                        <div class="card-body">
+
+                            <h3>
+                                Café Gelado
+                            </h3>
+
+                            <p>
+                                Refrescante, equilibrado
+                                e perfeito para dias quentes.
+                            </p>
+
+                            <div class="price">
+                                R$ 14,90
+                            </div>
+
+                            <button class="btn btn-royale w-100 mt-3" onclick="selecionar('Café Gelado')">
+
+                                Selecionar
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DOCES -->
+
+            <h2 class="mb-4">
+                 Doces
+            </h2>
+
+            <div class="row g-4 mb-5">
+
+
+                <div class="col-md-4">
+
+                    <div class="card card-product">
+
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85"
+                            alt="Bolo de chocolate">
+
+                        <div class="card-body">
+
+                            <h3>
+                                Bolo de Chocolate
+                            </h3>
+
+                            <p>
+                                Massa macia com cobertura
+                                cremosa de chocolate.
+                            </p>
+
+                            <div class="price">
+                                R$ 13,90
+                            </div>
+
+                            <button class="btn btn-royale w-100 mt-3" onclick="selecionar('Bolo de Chocolate')">
+
+                                Selecionar
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card card-product">
+
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=85"
+                            alt="Torta">
+
+                        <div class="card-body">
+
+                            <h3>
+                                Torta Artesanal
+                            </h3>
+
+                            <p>
+                                Receita especial com textura
+                                delicada e sabor marcante.
+                            </p>
+
+                            <div class="price">
+                                R$ 15,90
+                            </div>
+
+                            <button class="btn btn-royale w-100 mt-3" onclick="selecionar('Torta Artesanal')">
+
+                                Selecionar
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card card-product">
+
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=85"
+                            alt="Doce">
+
+                        <div class="card-body">
+
+                            <h3>
+                                Doce Royale
+                            </h3>
+
+                            <p>
+                                Uma opção delicada para
+                                acompanhar seu café.
+                            </p>
+
+                            <div class="price">
+                                R$ 11,90
+                            </div>
+
+                            <button class="btn btn-royale w-100 mt-3" onclick="selecionar('Doce Royale')">
+
+                                Selecionar
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DELIVERY -->
+
+            <h2 class="mb-4">
+                Delivery
+            </h2>
+
+            <div class="row g-4">
+
+
+                <div class="col-md-4">
+
+                    <div class="card card-product">
+
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=85"
+                            alt="Combo Royale">
+
+                        <div class="card-body">
+
+                            <h3>
+                                Combo Royale
+                            </h3>
+
+                            <p>
+                                Café especial acompanhado
+                                de um doce da casa.
+                            </p>
+
+                            <div class="price">
+                                R$ 24,90
+                            </div>
+
+                            <button class="btn btn-royale w-100 mt-3" onclick="selecionar('Combo Royale')">
+
+                                Selecionar
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card card-product">
+
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=85"
+                            alt="Café e bolo">
+
+                        <div class="card-body">
+
+                            <h3>
+                                Combo Café + Bolo
+                            </h3>
+
+                            <p>
+                                Uma combinação prática
+                                para aproveitar em casa.
+                            </p>
+
+                            <div class="price">
+                                R$ 27,90
+                            </div>
+
+                            <button class="btn btn-royale w-100 mt-3" onclick="selecionar('Combo Café + Bolo')">
+
+                                Selecionar
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="card card-product">
+
+                        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=800&q=85"
+                            alt="Box Royale">
+
+                        <div class="card-body">
+
+                            <h3>
+                                Box Royale
+                            </h3>
+
+                            <p>
+                                Seleção especial para
+                                compartilhar bons momentos.
+                            </p>
+
+                            <div class="price">
+                                R$ 39,90
+                            </div>
+
+                            <button class="btn btn-royale w-100 mt-3" onclick="selecionar('Box Royale')">
+
+                                Selecionar
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container text-center">
+
+            <h4>
+                Cafeteria Royale
+            </h4>
+
+            <p>
+                Um espaço moderno para transformar
+                cada café em uma experiência especial.
+            </p>
+
+            <a href="index.html" class="text-white mx-2">
+                Home
+            </a>
+
+            <a href="pedidos.html" class="text-white mx-2">
+                Pedidos
+            </a>
+
+            <a href="produtos.html" class="text-white mx-2">
+                Produtos
+            </a>
+
+            <a href="login.html" class="text-white mx-2">
+                Login
+            </a>
+
+            <br><br>
+
+            <small>
+                © 2026 Cafeteria Royale — Projeto acadêmico.
+            </small>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        function selecionar(produto) {
+
+            localStorage.setItem(
+                "royaleProduto",
+                produto
+            );
+
+            alert(
+                produto +
+                " foi selecionado!"
+            );
+
+            window.location.href = "login.html";
+
+        }
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1347 @@
+/* =========================================================
+   CAFETERIA ROYALE
+   CSS COMPLETO DO PROJETO
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+:root {
+    --royale-marrom: #5b3a29;
+    --royale-marrom-escuro: #211812;
+    --royale-dourado: #c99a5b;
+    --royale-dourado-claro: #e0b577;
+    --royale-creme: #f8f3ec;
+    --royale-branco: #ffffff;
+    --royale-cinza: #6c625c;
+    --royale-preto: #17110d;
+
+    --sombra-pequena:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+
+    --sombra-media:
+        0 10px 30px rgba(0, 0, 0, 0.12);
+
+    --sombra-grande:
+        0 15px 45px rgba(0, 0, 0, 0.20);
+
+    --raio-pequeno: 10px;
+    --raio-medio: 18px;
+    --raio-grande: 25px;
+
+    --transicao:
+        all 0.3s ease;
+}
+
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background-color: var(--royale-creme);
+
+    color: var(--royale-preto);
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   3. LINKS
+   ========================================================= */
+
+a {
+    text-decoration: none;
+
+    transition:
+        var(--transicao);
+}
+
+
+a:hover {
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   4. IMAGENS
+   ========================================================= */
+
+img {
+    max-width: 100%;
+
+    display: block;
+}
+
+
+/* =========================================================
+   5. HEADER / NAVBAR
+   ========================================================= */
+
+.navbar {
+    background-color:
+        var(--royale-marrom-escuro) !important;
+
+    min-height: 75px;
+
+    box-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.15);
+
+    z-index: 1000;
+}
+
+
+.navbar-brand {
+    color:
+        var(--royale-branco) !important;
+
+    font-size: 1.4rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.navbar-brand span {
+    color:
+        var(--royale-dourado);
+}
+
+
+.navbar-brand:hover {
+    transform: translateY(-1px);
+}
+
+
+.navbar-toggler {
+    border-color:
+        rgba(255, 255, 255, 0.4);
+}
+
+
+.navbar-toggler:focus {
+    box-shadow:
+        0 0 0 0.2rem
+        rgba(94, 68, 32, 0.25);
+}
+
+
+.navbar-nav {
+    align-items: center;
+}
+
+
+.nav-item {
+    margin: 0 3px;
+}
+
+
+.nav-link {
+    color:
+        var(--royale-branco) !important;
+
+    font-size: 0.98rem;
+
+    font-weight: 600;
+
+    padding:
+        10px 14px !important;
+
+    border-radius:
+        var(--raio-pequeno);
+
+    transition:
+        var(--transicao);
+}
+
+
+.nav-link:hover {
+    color:
+        var(--royale-dourado) !important;
+
+    background-color:
+        rgba(255, 255, 255, 0.06);
+
+    transform:
+        translateY(-1px);
+}
+
+
+.nav-link.active {
+    color:
+        var(--royale-dourado) !important;
+}
+
+
+/* =========================================================
+   6. HERO — PÁGINA HOME
+   ========================================================= */
+
+.hero {
+    min-height: 72vh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    color:
+        var(--royale-branco);
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.75),
+            rgba(0, 0, 0, 0.30)
+        ),
+        url(
+            "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1800&q=90"
+        );
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(0, 0, 0, 0.20)
+        );
+
+    pointer-events: none;
+}
+
+
+.hero .container {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.hero h1 {
+    font-size:
+        clamp(2.7rem, 7vw, 5.5rem);
+
+    font-weight: 800;
+
+    line-height: 1.05;
+
+    margin-bottom: 25px;
+}
+
+
+.hero p {
+    max-width: 650px;
+
+    font-size: 1.2rem;
+
+    line-height: 1.8;
+
+    color:
+        rgba(255, 255, 255, 0.92);
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   7. BOTÃO ROYALE
+   ========================================================= */
+
+.btn-royale {
+    background-color:
+        var(--royale-dourado);
+
+    color:
+        var(--royale-marrom-escuro);
+
+    border: none;
+
+    font-weight: 700;
+
+    border-radius:
+        var(--raio-pequeno);
+
+    padding:
+        11px 22px;
+
+    transition:
+        var(--transicao);
+
+    box-shadow:
+        var(--sombra-pequena);
+}
+
+
+.btn-royale:hover {
+    background-color:
+        var(--royale-dourado-claro);
+
+    color:
+        var(--royale-marrom-escuro);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        var(--sombra-media);
+}
+
+
+.btn-royale:active {
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   8. BADGES
+   ========================================================= */
+
+.badge-royale {
+    background-color:
+        var(--royale-dourado);
+
+    color:
+        var(--royale-marrom-escuro);
+
+    font-weight: 800;
+
+    padding:
+        8px 14px;
+
+    border-radius:
+        50px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   9. SEÇÕES
+   ========================================================= */
+
+.section {
+    padding:
+        75px 0;
+}
+
+
+.section.bg-white {
+    background-color:
+        var(--royale-branco) !important;
+}
+
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+
+.section-title span {
+    display: inline-block;
+
+    color:
+        var(--royale-dourado);
+
+    font-size: 0.95rem;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+
+.section-title h1,
+.section-title h2 {
+    color:
+        var(--royale-marrom-escuro);
+
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+
+.section-title h1 {
+    font-size:
+        clamp(2rem, 5vw, 3.3rem);
+}
+
+
+.section-title h2 {
+    font-size:
+        clamp(1.8rem, 4vw, 2.8rem);
+}
+
+
+.section-title p {
+    max-width: 750px;
+
+    margin:
+        0 auto;
+
+    color:
+        var(--royale-cinza);
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   10. CARROSSEL
+   ========================================================= */
+
+.carousel {
+    border-radius:
+        var(--raio-grande);
+
+    overflow: hidden;
+
+    box-shadow:
+        var(--sombra-media);
+}
+
+
+.carousel-item {
+    position: relative;
+}
+
+
+.carousel-item img {
+    width: 100%;
+
+    height: 520px;
+
+    object-fit: cover;
+
+    object-position: center;
+}
+
+
+.carousel-item::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 60%,
+            rgba(0, 0, 0, 0.35)
+        );
+
+    pointer-events: none;
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 8%;
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter:
+        drop-shadow(
+            0 2px 5px rgba(0, 0, 0, 0.7)
+        );
+}
+
+
+/* =========================================================
+   11. CARDS GERAIS
+   ========================================================= */
+
+.card-royale {
+    height: 100%;
+
+    border: none;
+
+    border-radius:
+        var(--raio-medio);
+
+    overflow: hidden;
+
+    background:
+        var(--royale-branco);
+
+    box-shadow:
+        var(--sombra-media);
+
+    transition:
+        var(--transicao);
+}
+
+
+.card-royale:hover {
+    transform:
+        translateY(-7px);
+
+    box-shadow:
+        var(--sombra-grande);
+}
+
+
+.card-royale img {
+    width: 100%;
+
+    height: 240px;
+
+    object-fit: cover;
+}
+
+
+.card-royale .card-body {
+    padding: 25px;
+}
+
+
+.card-royale h3 {
+    color:
+        var(--royale-marrom);
+
+    font-size: 1.35rem;
+
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+
+.card-royale p {
+    color:
+        var(--royale-cinza);
+
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   12. HISTÓRIA / TIMELINE
+   ========================================================= */
+
+.timeline {
+    position: relative;
+
+    border-left:
+        3px solid var(--royale-dourado);
+
+    padding-left: 30px;
+
+    max-width: 1000px;
+
+    margin:
+        0 auto;
+}
+
+
+.timeline-item {
+    position: relative;
+
+    margin-bottom: 55px;
+}
+
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+
+.timeline-item::before {
+    content: "";
+
+    position: absolute;
+
+    left: -42px;
+
+    top: 5px;
+
+    width: 18px;
+
+    height: 18px;
+
+    background:
+        var(--royale-dourado);
+
+    border:
+        4px solid var(--royale-creme);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 2px
+        var(--royale-dourado);
+}
+
+
+.timeline-item h3 {
+    color:
+        var(--royale-marrom-escuro);
+
+    font-size: 1.6rem;
+
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+
+.timeline-item p {
+    color:
+        var(--royale-cinza);
+
+    max-width: 850px;
+
+    line-height: 1.8;
+}
+
+
+.timeline-image {
+    width: 100%;
+
+    max-width: 600px;
+
+    height: 280px;
+
+    object-fit: cover;
+
+    border-radius:
+        var(--raio-medio);
+
+    margin-top: 18px;
+
+    box-shadow:
+        var(--sombra-pequena);
+
+    transition:
+        var(--transicao);
+}
+
+
+.timeline-image:hover {
+    transform:
+        scale(1.01);
+
+    box-shadow:
+        var(--sombra-media);
+}
+
+
+/* =========================================================
+   13. CARDS DE PRODUTOS
+   ========================================================= */
+
+.card-product {
+    height: 100%;
+
+    border: none;
+
+    overflow: hidden;
+
+    border-radius:
+        var(--raio-medio);
+
+    background:
+        var(--royale-branco);
+
+    box-shadow:
+        var(--sombra-media);
+
+    transition:
+        var(--transicao);
+}
+
+
+.card-product:hover {
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        var(--sombra-grande);
+}
+
+
+.card-product img {
+    width: 100%;
+
+    height: 230px;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.card-product:hover img {
+    transform:
+        scale(1.04);
+}
+
+
+.card-product .card-body {
+    padding: 25px;
+}
+
+
+.card-product h3 {
+    color:
+        var(--royale-marrom-escuro);
+
+    font-size: 1.4rem;
+
+    font-weight: 800;
+
+    margin-bottom: 10px;
+}
+
+
+.card-product p {
+    color:
+        var(--royale-cinza);
+
+    min-height: 50px;
+
+    margin-bottom: 18px;
+}
+
+
+.price {
+    color:
+        var(--royale-marrom);
+
+    font-size: 1.3rem;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   14. TÍTULOS DE CATEGORIA DO CARDÁPIO
+   ========================================================= */
+
+.section > .container > h2 {
+    color:
+        var(--royale-marrom-escuro);
+
+    font-size: 2rem;
+
+    font-weight: 800;
+
+    margin-top: 25px;
+
+    margin-bottom: 25px;
+
+    border-left:
+        5px solid var(--royale-dourado);
+
+    padding-left: 15px;
+}
+
+
+/* =========================================================
+   15. MAPA
+   ========================================================= */
+
+.map {
+    width: 100%;
+
+    height: 430px;
+
+    border: none;
+
+    border-radius:
+        var(--raio-grande);
+
+    box-shadow:
+        var(--sombra-media);
+}
+
+
+/* =========================================================
+   16. LOGIN
+   ========================================================= */
+
+.login-page {
+    min-height:
+        calc(100vh - 75px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        60px 15px;
+
+    background:
+        linear-gradient(
+            rgba(33, 24, 18, 0.78),
+            rgba(33, 24, 18, 0.78)
+        ),
+        url(
+            "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=90"
+        )
+        center/cover fixed;
+}
+
+
+.login-box {
+    width: 100%;
+
+    max-width: 500px;
+
+    margin:
+        80px auto;
+
+    padding: 40px;
+
+    background:
+        var(--royale-branco);
+
+    border-radius:
+        var(--raio-grande);
+
+    box-shadow:
+        var(--sombra-grande);
+}
+
+
+.login-box h1 {
+    color:
+        var(--royale-marrom-escuro);
+
+    font-weight: 800;
+}
+
+
+.login-box p {
+    color:
+        var(--royale-cinza);
+}
+
+
+.login-box .form-label {
+    color:
+        var(--royale-marrom-escuro);
+
+    font-weight: 700;
+}
+
+
+.login-box .form-control {
+    min-height: 48px;
+
+    border:
+        1px solid #ddd;
+
+    border-radius:
+        var(--raio-pequeno);
+
+    padding:
+        10px 14px;
+}
+
+
+.login-box .form-control:focus {
+    border-color:
+        var(--royale-dourado);
+
+    box-shadow:
+        0 0 0 0.2rem
+        rgba(201, 154, 91, 0.20);
+}
+
+
+/* =========================================================
+   17. ÁREA DE PEDIDOS
+   ========================================================= */
+
+.order-box {
+    width: 100%;
+
+    max-width: 850px;
+
+    margin:
+        80px auto;
+
+    padding: 40px;
+
+    background:
+        var(--royale-branco);
+
+    border-radius:
+        var(--raio-grande);
+
+    box-shadow:
+        var(--sombra-media);
+}
+
+
+.order-box h1 {
+    color:
+        var(--royale-marrom-escuro);
+
+    font-weight: 800;
+}
+
+
+.order-box h3 {
+    color:
+        var(--royale-marrom);
+
+    font-weight: 800;
+}
+
+
+.order-box hr {
+    margin:
+        30px 0;
+
+    border-color:
+        rgba(0, 0, 0, 0.1);
+}
+
+
+.order-card {
+    background:
+        var(--royale-creme);
+
+    border:
+        1px solid
+        rgba(91, 58, 41, 0.08);
+
+    border-radius:
+        var(--raio-medio);
+
+    padding: 25px;
+
+    box-shadow:
+        var(--sombra-pequena);
+}
+
+
+.order-card h4 {
+    color:
+        var(--royale-marrom-escuro);
+
+    font-weight: 800;
+
+    margin-bottom: 8px;
+}
+
+
+.text-success {
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   18. FOOTER
+   ========================================================= */
+
+footer {
+    background:
+        var(--royale-marrom-escuro);
+
+    color:
+        var(--royale-branco);
+
+    padding:
+        50px 0;
+
+    margin-top: 40px;
+}
+
+
+footer h4 {
+    color:
+        var(--royale-branco);
+
+    font-size: 1.5rem;
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+}
+
+
+footer p {
+    color:
+        rgba(255, 255, 255, 0.75);
+
+    max-width: 600px;
+
+    margin:
+        0 auto 20px;
+}
+
+
+footer a {
+    color:
+        var(--royale-branco) !important;
+
+    font-weight: 600;
+}
+
+
+footer a:hover {
+    color:
+        var(--royale-dourado) !important;
+}
+
+
+footer small {
+    color:
+        rgba(255, 255, 255, 0.60);
+}
+
+
+/* =========================================================
+   19. ÍCONES
+   ========================================================= */
+
+.bi {
+    vertical-align: -0.08em;
+}
+
+
+.nav-link .bi {
+    margin-right: 4px;
+}
+
+
+.btn .bi {
+    margin-right: 5px;
+}
+
+
+/* =========================================================
+   20. SELEÇÃO DE TEXTO
+   ========================================================= */
+
+::selection {
+    background:
+        var(--royale-dourado);
+
+    color:
+        var(--royale-marrom-escuro);
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+    background:
+        var(--royale-creme);
+}
+
+
+::-webkit-scrollbar-thumb {
+    background:
+        var(--royale-marrom);
+
+    border-radius:
+        20px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background:
+        var(--royale-dourado);
+}
+
+
+@media (max-width: 991px) {
+
+    .navbar-nav {
+        align-items: stretch;
+
+        padding-top: 15px;
+
+        padding-bottom: 10px;
+    }
+
+
+    .nav-link {
+        padding:
+            10px 12px !important;
+    }
+
+
+    .hero {
+        min-height: 65vh;
+
+        background-position:
+            center;
+    }
+
+
+    .hero h1 {
+        font-size:
+            clamp(2.5rem, 9vw, 4.5rem);
+    }
+
+
+    .carousel-item img {
+        height: 430px;
+    }
+
+
+    .section {
+        padding:
+            60px 0;
+    }
+
+
+    .login-box,
+    .order-box {
+        margin:
+            50px auto;
+    }
+
+}
+
+
+/* =========================================================
+   23. RESPONSIVIDADE — CELULARES
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .navbar {
+        min-height: 68px;
+    }
+
+
+    .navbar-brand {
+        font-size:
+            1.15rem;
+    }
+
+
+    .hero {
+        min-height: 75vh;
+
+        text-align: center;
+
+        padding:
+            70px 0;
+    }
+
+
+    .hero h1 {
+        font-size:
+            2.8rem;
+    }
+
+
+    .hero p {
+        font-size:
+            1rem;
+
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+
+    .section {
+        padding:
+            50px 0;
+    }
+
+
+    .section-title {
+        margin-bottom:
+            30px;
+    }
+
+
+    .section-title h1 {
+        font-size:
+            2.2rem;
+    }
+
+
+    .section-title h2 {
+        font-size:
+            2rem;
+    }
+
+
+    .carousel-item img {
+        height:
+            320px;
+    }
+
+
+    .timeline {
+        padding-left:
+            25px;
+    }
+
+
+    .timeline-item::before {
+        left:
+            -37px;
+    }
+
+
+    .timeline-item h3 {
+        font-size:
+            1.35rem;
+    }
+
+
+    .timeline-image {
+        height:
+            220px;
+    }
+
+
+    .card-royale img {
+        height:
+            220px;
+    }
+
+
+    .card-product img {
+        height:
+            220px;
+    }
+
+
+    .map {
+        height:
+            350px;
+    }
+
+
+    .login-box,
+    .order-box {
+        padding:
+            25px 20px;
+
+        margin:
+            40px auto;
+    }
+
+
+    footer {
+        padding:
+            40px 15px;
+    }
+
+}
+
+
+/* =========================================================
+   24. CELULARES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size:
+            2.35rem;
+    }
+
+
+    .hero p {
+        font-size:
+            0.95rem;
+    }
+
+
+    .carousel-item img {
+        height:
+            260px;
+    }
+
+
+    .timeline-image {
+        height:
+            190px;
+    }
+
+
+    .map {
+        height:
+            280px;
+    }
+
+
+    .login-box,
+    .order-box {
+        border-radius:
+            var(--raio-medio);
+
+        padding:
+            22px 17px;
+    }
+
+
+    .btn-royale {
+        width: 100%;
+    }
+
+}
