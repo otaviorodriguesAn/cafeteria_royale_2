@@ -12,9 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        /* ==============================
-           CONFIGURAÇÕES GERAIS
-        ============================== */
+    
         :root {
             --marrom: #211812;
             --marrom-claro: #5b3a29;
@@ -579,11 +577,11 @@
                                 </thead>
                                 <tbody>
                                     ${pedidos.map(pedido => {
-                                        let classeStatus = "status-pendente";
-                                        if (pedido.status === "Confirmado") classeStatus = "status-confirmado";
-                                        if (pedido.status === "Cancelado") classeStatus = "status-cancelado";
+                let classeStatus = "status-pendente";
+                if (pedido.status === "Confirmado") classeStatus = "status-confirmado";
+                if (pedido.status === "Cancelado") classeStatus = "status-cancelado";
 
-                                        return `
+                return `
                                             <tr>
                                                 <td><strong>${pedido.id}</strong></td>
                                                 <td>${pedido.data}</td>
@@ -606,7 +604,7 @@
                                                 </td>
                                             </tr>
                                         `;
-                                    }).join("")}
+            }).join("")}
                                 </tbody>
                             </table>
                         </div>
