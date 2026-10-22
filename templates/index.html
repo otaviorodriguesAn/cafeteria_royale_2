@@ -5,537 +5,832 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cafeteria Royale</title>
+        <title>Cafeteria Royale</title>
+    <link rel="icon" type="image/png" href="//static/img/favicon.png">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="/static/img/logo.png">
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-        crossorigin="anonymous">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        :root {
+            --marrom: #211812;
+            --marrom-claro: #5b3a29;
+            --dourado: #c99a5b;
+            --dourado-claro: #e0b577;
+            --creme: #f8f3ec;
+            --branco: #ffffff;
+            --cinza: #6c625c;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            margin: 0;
+            background: var(--creme);
+            color: var(--marrom);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* MENU */
+
+        .navbar {
+            background: var(--marrom);
+            padding: 15px 0;
+            box-shadow: 0 3px 15px #0002;
+        }
+
+        .navbar-brand {
+            color: var(--branco);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .navbar-brand span {
+            color: var(--dourado);
+        }
+
+        .nav-link {
+            color: var(--branco);
+            margin-left: 8px;
+            font-size: .9rem;
+            transition: .3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--dourado-claro);
+        }
+
+        /* BOTÕES */
+
+        .btn-royale {
+            background: var(--dourado);
+            color: var(--marrom);
+            border: 1px solid var(--dourado);
+            border-radius: 8px;
+            padding: 12px 22px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btn-royale:hover {
+            background: var(--dourado-claro);
+            border-color: var(--dourado-claro);
+            color: var(--marrom);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-royale {
+            border: 1px solid var(--dourado);
+            color: var(--branco);
+            border-radius: 8px;
+            padding: 11px 20px;
+            font-weight: 600;
+        }
+
+        .btn-outline-royale:hover {
+            background: var(--dourado);
+            color: var(--marrom);
+        }
+
+        /* CAPA */
+
+        .hero {
+            min-height: 540px;
+            display: flex;
+            align-items: center;
+            color: var(--branco);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(23, 17, 14, .92),
+                    rgba(23, 17, 14, .65),
+                    rgba(23, 17, 14, .25)
+                ),
+                url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1900&q=85")
+                center / cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 760px;
+            padding: 85px 0;
+        }
+
+        .eyebrow {
+            color: var(--dourado-claro);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: .78rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.7rem, 6vw, 4.8rem);
+            line-height: 1.12;
+            margin: 22px 0;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--dourado-claro);
+        }
+
+        .hero p {
+            max-width: 620px;
+            line-height: 1.9;
+            color: #eee5dc;
+            margin-bottom: 30px;
+        }
+
+        /* SEÇÕES */
+
+        .section {
+            padding: 85px 0;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin: 15px 0 20px;
+        }
+
+        .section-description {
+            color: var(--cinza);
+            line-height: 1.9;
+        }
+
+        /* HISTÓRIA */
+
+        .story-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 14px 14px 0 var(--dourado);
+        }
+
+        .story-text p {
+            color: var(--cinza);
+            line-height: 1.95;
+            text-align: justify;
+        }
+
+        .quote {
+            margin-top: 25px;
+            padding: 25px;
+            background: #efe4d5;
+            border-left: 5px solid var(--dourado);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+            color: var(--marrom);
+        }
+
+        /* DESTAQUES */
+
+        .highlights {
+            background: #efe4d5;
+            padding: 35px 0;
+        }
+
+        .highlight-item {
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        .highlight-item i {
+            font-size: 2rem;
+            color: var(--marrom-claro);
+        }
+
+        .highlight-item h3 {
+            font-size: 1.2rem;
+            margin: 12px 0 5px;
+            font-weight: 700;
+        }
+
+        .highlight-item p {
+            color: var(--cinza);
+            font-size: .88rem;
+            margin: 0;
+        }
+
+        /* MISSÃO, VISÃO E VALORES */
+
+        .dark-section {
+            background: var(--marrom);
+            color: var(--branco);
+        }
+
+        .dark-section .section-description {
+            color: #ddd3cb;
+        }
+
+        .value-card {
+            height: 100%;
+            padding: 32px 26px;
+            border: 1px solid #c99a5b66;
+            border-radius: 14px;
+            background: #ffffff08;
+            transition: .3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--dourado);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #c99a5b22;
+            color: var(--dourado-claro);
+            font-size: 1.8rem;
+            border-radius: 12px;
+            margin-bottom: 22px;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            color: #ddd3cb;
+            line-height: 1.85;
+            font-size: .93rem;
+            margin: 0;
+        }
+
+        /* AMBIENTES */
+
+        .environment-card {
+            height: 100%;
+            overflow: hidden;
+            border-radius: 14px;
+            background: var(--branco);
+            box-shadow: 0 8px 30px #21181212;
+            transition: .3s;
+        }
+
+        .environment-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .environment-card img {
+            width: 100%;
+            height: 290px;
+            object-fit: cover;
+        }
+
+        .environment-content {
+            padding: 28px;
+        }
+
+        .environment-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .environment-content p {
+            color: var(--cinza);
+            line-height: 1.85;
+            margin: 0;
+        }
+
+        /* DIFERENCIAIS */
+
+        .feature {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 27px;
+        }
+
+        .feature-icon {
+            min-width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #c99a5b24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--marrom-claro);
+            font-size: 1.5rem;
+        }
+
+        .feature h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: var(--cinza);
+            line-height: 1.8;
+            margin: 0;
+            font-size: .92rem;
+        }
+
+        /* CHAMADA FINAL */
+
+        .visit-section {
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(33, 24, 18, .94),
+                    rgba(33, 24, 18, .72)
+                ),
+                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85")
+                center / cover no-repeat;
+
+            color: var(--branco);
+        }
+
+        .visit-section p {
+            color: #e4d9ce;
+            line-height: 1.9;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            background: var(--marrom);
+            color: var(--branco);
+            padding: 45px 0 20px;
+        }
+
+        .footer-brand {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .footer-brand span {
+            color: var(--dourado);
+        }
+
+        footer p {
+            color: #ddd3cb;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #ddd3cb;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        footer a:hover {
+            color: var(--dourado-claro);
+        }
+
+        .footer-line {
+            border-color: #ffffff30;
+            margin: 25px 0 20px;
+        }
+
+        /* RESPONSIVIDADE */
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 480px;
+                background-position: 60% center;
+            }
+
+            .hero-content {
+                padding: 65px 0;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .story-image {
+                height: 340px;
+                box-shadow: 8px 8px 0 var(--dourado);
+                margin-bottom: 10px;
+            }
+
+            .navbar-nav {
+                padding-top: 12px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <header class="site-header">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
+    <!-- MENU PRINCIPAL -->
 
-                <a class="navbar-brand" href="#home" aria-label="Página inicial">
-                    <span class="logo-wrapper">
-                        <img src="/static/img/logo.png" class="site-logo" alt="Logo da Cafeteria Royale">
-                    </span>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
 
-                    <span class="brand-name">
-                        Cafeteria <strong>Royale</strong>
-                    </span>
-                </a>
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-cup-hot-fill"></i>
+                Cafeteria <span>Royale</span>
+            </a>
 
-                <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#menuPrincipal"
-                    aria-controls="menuPrincipal"
-                    aria-expanded="false"
-                    aria-label="Abrir menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menuPrincipal"
+                aria-controls="menuPrincipal"
+                aria-expanded="false"
+                aria-label="Abrir menu">
 
-                <div class="collapse navbar-collapse" id="menuPrincipal">
-                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index.html">
-                                <i class="bi bi-house-door-fill"></i>
-                                Home
-                            </a>
-                        </li>
+            <div class="collapse navbar-collapse" id="menuPrincipal">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="localização.html">
-                                <i class="bi bi-cup-hot-fill"></i>
-                                Localização
-                            </a>
-                        </li>
+                <ul class="navbar-nav ms-auto align-items-lg-center">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.html">
-                                <i class="bi bi-shop"></i>
-                                Login
-                            </a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-fill"></i> Home
+                        </a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="pedidos.html">
-                                <i class="bi bi-bag-check-fill"></i>
-                                Pedidos
-                            </a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="localização.html">
+                            <i class="bi bi-geo-alt-fill"></i> Localização
+                        </a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a class="btn nav-order-button" href="produtos.html">
-                                <i class="bi bi-cart-plus-fill"></i>
-                                produtos
-                            </a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produtos.html">
+                            <i class="bi bi-cup-hot-fill"></i> Produtos
+                        </a>
+                    </li>
 
-                    </ul>
-                </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pedidos.html">
+                            <i class="bi bi-bag-fill"></i> Pedidos
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="bi bi-person-fill"></i> Login
+                        </a>
+                    </li>
+
+                </ul>
 
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <main id="home">
+    <main>
 
-        <section class="hero-section" aria-label="Destaques da cafeteria">
-            <div id="carouselPrincipal" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <!-- CAPA -->
 
-                <div class="carousel-indicators">
-                    <button type="button"
-                        data-bs-target="#carouselPrincipal"
-                        data-bs-slide-to="0"
-                        class="active"
-                        aria-current="true"
-                        aria-label="Slide 1"></button>
+        <section class="hero">
+            <div class="container">
 
-                    <button type="button"
-                        data-bs-target="#carouselPrincipal"
-                        data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
+                <div class="hero-content">
 
-                    <button type="button"
-                        data-bs-target="#carouselPrincipal"
-                        data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
+                    <span class="eyebrow">
+                        <i class="bi bi-stars"></i>
+                        Bem-vindo à Cafeteria Royale
+                    </span>
 
-                <div class="carousel-inner">
+                    <h1>
+                        O prazer de um bom café.
+                        <br>
+                        <span>A arte de viver o momento.</span>
+                    </h1>
 
-                    <div class="carousel-item active">
-                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=85"
-                            alt="Xícara de café sendo preparada">
+                    <p>
+                        Um ambiente elegante e acolhedor, criado para
+                        transformar pequenas pausas em experiências
+                        especiais. Conheça nossa história, nossos valores
+                        e o cuidado presente em cada detalhe.
+                    </p>
 
-                        <div class="carousel-caption text-start">
-                            <span class="hero-tag">
-                                <i class="bi bi-stars"></i>
-                                Sabor especial
-                            </span>
+                    <a href="#historia" class="btn btn-royale me-2 mb-2">
+                        <i class="bi bi-book-half"></i>
+                        Nossa história
+                    </a>
 
-                            <h1>Seu momento começa aqui</h1>
-                            <p>Cafés especiais preparados com carinho.</p>
-
-                            <a href="#produtos" class="btn btn-royale">
-                                Ver cardápio
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1600&q=85"
-                            alt="Café latte com espuma">
-
-                        <div class="carousel-caption">
-                            <span class="hero-tag">
-                                <i class="bi bi-heart-fill"></i>
-                                Feito para você
-                            </span>
-
-                            <h1>Sabor em cada detalhe</h1>
-                            <p>Receitas artesanais e ingredientes selecionados.</p>
-
-                            <a href="#produtos" class="btn btn-royale">
-                                Fazer pedido
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1600&q=85"
-                            alt="Grãos de café e uma xícara">
-
-                        <div class="carousel-caption text-end">
-                            <span class="hero-tag">
-                                <i class="bi bi-award-fill"></i>
-                                Qualidade Royale
-                            </span>
-
-                            <h1>O melhor café da cidade</h1>
-                            <p>Descubra o aroma dos nossos cafés selecionados.</p>
-
-                            <a href="#produtos" class="btn btn-royale">
-                                Conhecer produtos
-                            </a>
-                        </div>
-                    </div>
+                    <a href="produtos.html"
+                       class="btn btn-outline-royale mb-2">
+                        Explorar cardápio
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
 
                 </div>
-
-                <button class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselPrincipal"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                    <span class="visually-hidden">Anterior</span>
-                </button>
-
-                <button class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselPrincipal"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                    <span class="visually-hidden">Próximo</span>
-                </button>
 
             </div>
         </section>
 
-        <section id="produtos" class="products-section py-5">
+        <!-- HISTÓRIA -->
+
+        <section class="section" id="historia">
             <div class="container">
 
-                <div class="section-heading text-center mb-5">
-                    <span class="badge badge-royale">
-                        <i class="bi bi-cup-hot-fill"></i>
-                        Cardápio Royale
-                    </span>
+                <div class="row align-items-center g-5">
 
-                    <h2>Escolha o seu favorito</h2>
+                    <div class="col-lg-6">
 
-                    <p>
-                        Produtos preparados na hora para deixar o seu dia mais saboroso.
+                        <img
+                            class="story-image"
+                            src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1100&q=85"
+                            alt="Ambiente elegante de uma cafeteria">
+
+                    </div>
+
+                    <div class="col-lg-6 story-text">
+
+                        <span class="eyebrow">Nossa essência</span>
+
+                        <h2 class="section-title">
+                            Uma história feita de
+                            <span style="color:var(--marrom-claro)">
+                                aroma e cuidado
+                            </span>
+                        </h2>
+
+                        <p>
+                            A Cafeteria Royale nasceu da paixão pelo café
+                            e da vontade de criar um espaço onde qualidade,
+                            elegância e acolhimento caminham juntos.
+                            Nossa proposta é oferecer muito mais do que
+                            uma bebida: um lugar para conversar, celebrar,
+                            trabalhar ou simplesmente respirar durante
+                            a rotina.
+                        </p>
+
+                        <p>
+                            Inspirada nas cafeterias clássicas e na cultura
+                            contemporânea do café, a Royale combina uma
+                            identidade visual sofisticada com um cardápio
+                            variado. Cafés preparados com atenção, doces
+                            e acompanhamentos complementam a experiência
+                            e valorizam cada visita.
+                        </p>
+
+                        <p>
+                            O ambiente foi pensado para unir tons de
+                            marrom, detalhes dourados, iluminação
+                            aconchegante e elementos que transmitem
+                            conforto. Cada escolha reforça a essência
+                            da marca: transformar momentos simples
+                            em lembranças agradáveis.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section dark-section" id="proposito">
+            <div class="container">
+
+                <div class="text-center mb-5">
+
+                    <span class="eyebrow">O que nos inspira</span>
+
+                    <h2 class="section-title">
+                        Missão, visão e valores
+                    </h2>
+
+                    <p class="section-description">
+                        Os princípios que orientam a proposta da
+                        Cafeteria Royale e a experiência que desejamos
+                        oferecer a cada cliente.
                     </p>
+
                 </div>
 
                 <div class="row g-4">
 
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=85"
-                                    alt="Café espresso servido em uma xícara">
+                    <div class="col-md-4">
+                        <article class="value-card">
 
-                                <span class="product-icon">
-                                    <i class="bi bi-cup-hot-fill"></i>
-                                </span>
+                            <div class="value-icon">
+                                <i class="bi bi-bullseye"></i>
                             </div>
 
-                            <div class="product-content">
-                                <span class="product-category">Café quente</span>
-                                <h3>Espresso Royale</h3>
-                                <p>Café intenso, encorpado e preparado com grãos selecionados.</p>
+                            <h3>Missão</h3>
 
-                                <div class="product-footer">
-                                    <strong>R$ 7,90</strong>
+                            <p>
+                                Servir cafés e acompanhamentos de qualidade
+                                em um ambiente elegante e acolhedor, com
+                                atenção ao preparo, ao atendimento e ao
+                                bem-estar dos clientes.
+                            </p>
 
-                                    <button type="button"
-                                        class="btn btn-outline-royale btn-pedir"
-                                        data-product="Espresso Royale"
-                                        data-price="7.90"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalPedido">
-                                        <i class="bi bi-cart-plus"></i>
-                                        Pedir
-                                    </button>
-                                </div>
-                            </div>
                         </article>
                     </div>
 
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=800&q=85"
-                                    alt="Cappuccino cremoso com espuma">
+                    <div class="col-md-4">
+                        <article class="value-card">
 
-                                <span class="product-icon">
-                                    <i class="bi bi-cup-hot-fill"></i>
-                                </span>
+                            <div class="value-icon">
+                                <i class="bi bi-eye-fill"></i>
                             </div>
 
-                            <div class="product-content">
-                                <span class="product-category">Café quente</span>
-                                <h3>Cappuccino Cremoso</h3>
-                                <p>Café, leite vaporizado e espuma cremosa na medida certa.</p>
+                            <h3>Visão</h3>
 
-                                <div class="product-footer">
-                                    <strong>R$ 12,90</strong>
+                            <p>
+                                Construir uma marca reconhecida por sua
+                                identidade sofisticada, pela qualidade
+                                dos produtos e por proporcionar
+                                experiências positivas em cada visita.
+                            </p>
 
-                                    <button type="button"
-                                        class="btn btn-outline-royale btn-pedir"
-                                        data-product="Cappuccino Cremoso"
-                                        data-price="12.90"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalPedido">
-                                        <i class="bi bi-cart-plus"></i>
-                                        Pedir
-                                    </button>
-                                </div>
-                            </div>
                         </article>
                     </div>
 
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=85"
-                                    alt="Café gelado com gelo">
+                    <div class="col-md-4">
+                        <article class="value-card">
 
-                                <span class="product-icon">
-                                    <i class="bi bi-snow"></i>
-                                </span>
+                            <div class="value-icon">
+                                <i class="bi bi-heart-fill"></i>
                             </div>
 
-                            <div class="product-content">
-                                <span class="product-category">Café gelado</span>
-                                <h3>Iced Coffee</h3>
-                                <p>Café gelado, refrescante e ideal para os dias quentes.</p>
+                            <h3>Valores</h3>
 
-                                <div class="product-footer">
-                                    <strong>R$ 14,90</strong>
+                            <p>
+                                Qualidade, respeito, hospitalidade,
+                                dedicação, criatividade, responsabilidade
+                                e atenção aos detalhes em todas as etapas
+                                do atendimento.
+                            </p>
 
-                                    <button type="button"
-                                        class="btn btn-outline-royale btn-pedir"
-                                        data-product="Iced Coffee"
-                                        data-price="14.90"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalPedido">
-                                        <i class="bi bi-cart-plus"></i>
-                                        Pedir
-                                    </button>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=85"
-                                    alt="Café latte com espuma">
-
-                                <span class="product-icon">
-                                    <i class="bi bi-cup-hot-fill"></i>
-                                </span>
-                            </div>
-
-                            <div class="product-content">
-                                <span class="product-category">Especialidade</span>
-                                <h3>Latte Royale</h3>
-                                <p>Espresso suave com leite cremoso e espuma delicada.</p>
-
-                                <div class="product-footer">
-                                    <strong>R$ 13,90</strong>
-
-                                    <button type="button"
-                                        class="btn btn-outline-royale btn-pedir"
-                                        data-product="Latte Royale"
-                                        data-price="13.90"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalPedido">
-                                        <i class="bi bi-cart-plus"></i>
-                                        Pedir
-                                    </button>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=85"
-                                    alt="Café mocha com chocolate">
-
-                                <span class="product-icon">
-                                    <i class="bi bi-heart-fill"></i>
-                                </span>
-                            </div>
-
-                            <div class="product-content">
-                                <span class="product-category">Especialidade</span>
-                                <h3>Mocha Royale</h3>
-                                <p>Espresso, chocolate e leite vaporizado.</p>
-
-                                <div class="product-footer">
-                                    <strong>R$ 15,90</strong>
-
-                                    <button type="button"
-                                        class="btn btn-outline-royale btn-pedir"
-                                        data-product="Mocha Royale"
-                                        data-price="15.90"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalPedido">
-                                        <i class="bi bi-cart-plus"></i>
-                                        Pedir
-                                    </button>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1462917882517-e150004895fa?auto=format&fit=crop&w=800&q=85"
-                                    alt="Café coado servido em uma xícara">
-
-                                <span class="product-icon">
-                                    <i class="bi bi-cup-hot-fill"></i>
-                                </span>
-                            </div>
-
-                            <div class="product-content">
-                                <span class="product-category">Café filtrado</span>
-                                <h3>Café Coado Especial</h3>
-                                <p>Café filtrado com aroma intenso e notas equilibradas.</p>
-
-                                <div class="product-footer">
-                                    <strong>R$ 9,90</strong>
-
-                                    <button type="button"
-                                        class="btn btn-outline-royale btn-pedir"
-                                        data-product="Café Coado Especial"
-                                        data-price="9.90"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalPedido">
-                                        <i class="bi bi-cart-plus"></i>
-                                        Pedir
-                                    </button>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=800&q=85"
-                                    alt="Café macchiato com espuma de leite">
-
-                                <span class="product-icon">
-                                    <i class="bi bi-cup-hot-fill"></i>
-                                </span>
-                            </div>
-
-                            <div class="product-content">
-                                <span class="product-category">Especialidade</span>
-                                <h3>Macchiato</h3>
-                                <p>Espresso intenso com uma camada de leite.</p>
-
-                                <div class="product-footer">
-                                    <strong>R$ 11,90</strong>
-
-                                    <button type="button"
-                                        class="btn btn-outline-royale btn-pedir"
-                                        data-product="Macchiato"
-                                        data-price="11.90"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalPedido">
-                                        <i class="bi bi-cart-plus"></i>
-                                        Pedir
-                                    </button>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=85"
-                                    alt="Croissant artesanal">
-
-                                <span class="product-icon">
-                                    <i class="bi bi-basket-fill"></i>
-                                </span>
-                            </div>
-
-                            <div class="product-content">
-                                <span class="product-category">Acompanhamento</span>
-                                <h3>Croissant Artesanal</h3>
-                                <p>Massa leve e crocante para acompanhar seu café.</p>
-
-                                <div class="product-footer">
-                                    <strong>R$ 10,90</strong>
-
-                                    <button type="button"
-                                        class="btn btn-outline-royale btn-pedir"
-                                        data-product="Croissant Artesanal"
-                                        data-price="10.90"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalPedido">
-                                        <i class="bi bi-cart-plus"></i>
-                                        Pedir
-                                    </button>
-                                </div>
-                            </div>
                         </article>
                     </div>
 
                 </div>
-            </div>
-        </section>
-
-        <section id="sobre" class="about-section">
-            <div class="container">
-
-                <article class="about-card">
-
-                    <div class="about-image">
-                        <img src="/static/img/local da cafeteria.jpg" alt="Interior da Cafeteria Royale">
-                    </div>
-
-                    <div class="about-content">
-                        <span class="about-tag">
-                            <i class="bi bi-shop"></i>
-                            Nossa história
-                        </span>
-
-                        <h2>Cafeteria Royale</h2>
-
-                        <p>
-                            A Cafeteria Royale nasceu da paixão pela arte de bem receber
-                            e do desejo de unir a tradição dos grandes cafés europeus
-                            à sofisticação da alta gastronomia contemporânea.
-                        </p>
-
-                        <p>
-                            Cada detalhe do espaço foi planejado para oferecer elegância,
-                            conforto e uma experiência especial em cada visita.
-                        </p>
-
-                        <a href="#pedidos" class="btn btn-royale">
-                            <i class="bi bi-cup-hot-fill"></i>
-                            Saiba mais 
-                        </a>
-                    </div>
-
-                </article>
 
             </div>
         </section>
 
-        <section id="pedidos" class="orders-section py-5">
+        <!-- AMBIENTES -->
+
+        <section class="section" id="ambientes">
             <div class="container">
 
-                <div class="order-box text-center">
-                    <i class="bi bi-bag-check-fill order-icon"></i>
+                <div class="text-center mb-5">
 
-                    <h2>Faça seu pedido</h2>
+                    <span class="eyebrow">Um lugar para ficar</span>
 
-                    <p>
-                        Escolha um produto no cardápio e finalize sua compra.
+                    <h2 class="section-title">
+                        Conheça nossos ambientes
+                    </h2>
+
+                    <p class="section-description">
+                        Espaços pensados para diferentes momentos:
+                        uma conversa entre amigos, uma pausa tranquila
+                        ou um café ao ar livre.
                     </p>
 
-                    <a href="#produtos" class="btn btn-royale">
-                        <i class="bi bi-cup-hot-fill"></i>
-                        Ver produtos
-                    </a>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-md-6">
+                        <article class="environment-card">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85"
+                                alt="Ambiente interno da cafeteria com mesas e iluminação acolhedora">
+
+                            <div class="environment-content">
+
+                                <h3>
+                                    <i class="bi bi-lamp-fill"
+                                       style="color:var(--dourado)"></i>
+                                    Ambiente interno
+                                </h3>
+
+                                <p>
+                                    Um espaço confortável com iluminação
+                                    quente, mesas organizadas e tons que
+                                    combinam marrom, creme e dourado.
+                                    Ideal para encontros, estudos,
+                                    trabalho ou uma pausa tranquila
+                                    acompanhada de café.
+                                </p>
+
+                            </div>
+
+                        </article>
+                    </div>
+
+                    <div class="col-md-6">
+                        <article class="environment-card">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=85"
+                                alt="Área externa de cafeteria com mesas e plantas">
+
+                            <div class="environment-content">
+
+                                <h3>
+                                    <i class="bi bi-tree-fill"
+                                       style="color:var(--dourado)"></i>
+                                    Ambiente externo
+                                </h3>
+
+                                <p>
+                                    Uma área convidativa com plantas,
+                                    mesas e clima descontraído, perfeita
+                                    para aproveitar os dias agradáveis,
+                                    conversar com amigos e apreciar
+                                    sua bebida ao ar livre.
+                                </p>
+
+                            </div>
+
+                        </article>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section visit-section">
+            <div class="container">
+
+                <div class="row align-items-center g-4">
+
+                    <div class="col-lg-8">
+
+                        <span class="eyebrow">
+                            Sua próxima pausa começa aqui
+                        </span>
+
+                        <h2 class="section-title">
+                            Venha viver a experiência Royale.
+                        </h2>
+
+                        <p class="mb-0">
+                            Escolha seu café favorito, conheça nosso
+                            espaço e aproveite um momento feito para você.
+                            Será um prazer fazer parte das suas
+                            boas lembranças.
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-4 text-lg-end">
+
+                        <a href="localização.html"
+                           class="btn btn-royale me-2 mb-2">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            Localização
+                        </a>
+
+                        <a href="produtos.html"
+                           class="btn btn-outline-royale mb-2">
+                            Ver produtos
+                        </a>
+
+                    </div>
+
                 </div>
 
             </div>
@@ -543,126 +838,90 @@
 
     </main>
 
-    <footer class="site-footer py-4">
-        <div class="container text-center">
-            <strong>
-                <i class="bi bi-cup-hot-fill"></i>
-                Cafeteria Royale
-            </strong>
+    <!-- RODAPÉ -->
 
-            <p class="mb-0">
-                Café especial para momentos especiais.
-            </p>
+    <footer>
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-lg-5">
+
+                    <div class="footer-brand">
+                        <i class="bi bi-cup-hot-fill"></i>
+                        Cafeteria <span>Royale</span>
+                    </div>
+
+                    <p class="mt-3">
+                        Um espaço moderno para transformar cada café
+                        em uma experiência especial.
+                    </p>
+
+                </div>
+
+                <div class="col-6 col-lg-3">
+
+                    <h5 class="h6 mb-3"
+                        style="color:var(--dourado-claro)">
+                        NAVEGAÇÃO
+                    </h5>
+
+                    <p><a href="index.html">Home</a></p>
+                    <p><a href="produtos.html">Produtos</a></p>
+                    <p><a href="pedidos.html">Pedidos</a></p>
+                    <p><a href="login.html">Login</a></p>
+
+                </div>
+
+                <div class="col-6 col-lg-4">
+
+                    <h5 class="h6 mb-3"
+                        style="color:var(--dourado-claro)">
+                        NOSSA ESSÊNCIA
+                    </h5>
+
+                    <p>
+                        <i class="bi bi-cup-hot me-2"></i>
+                        Cafés especiais
+                    </p>
+
+                    <p>
+                        <i class="bi bi-heart me-2"></i>
+                        Atendimento acolhedor
+                    </p>
+
+                    <p>
+                        <i class="bi bi-stars me-2"></i>
+                        Momentos únicos
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr class="footer-line mt-4">
+
+            <div class="d-flex flex-column flex-md-row
+                        justify-content-between gap-2">
+
+                <small>
+                    © 2026 Cafeteria Royale
+                </small>
+
+                <small>
+                    Cafés especiais • Momentos únicos
+                </small>
+
+            </div>
+
         </div>
     </footer>
 
-    <div class="modal fade" id="modalPedido" tabindex="-1" aria-labelledby="modalPedidoLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content order-modal">
+    <!-- Bootstrap JavaScript -->
 
-                <div class="modal-header">
-                    <h2 class="modal-title" id="modalPedidoLabel">
-                        <i class="bi bi-cart-check-fill"></i>
-                        Finalizar pedido
-                    </h2>
-
-                    <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Fechar"></button>
-                </div>
-
-                <div class="modal-body">
-
-                    <form id="pedidoForm">
-                        <div class="selected-product mb-4">
-                            <span>Produto selecionado</span>
-                            <strong id="produtoSelecionado">Selecione um produto</strong>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="nomeCliente" class="form-label">
-                                <i class="bi bi-person-fill"></i>
-                                Nome do cliente
-                            </label>
-
-                            <input type="text" id="nomeCliente" class="form-control" placeholder="Digite seu nome" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="quantidadeProduto" class="form-label">
-                                <i class="bi bi-plus-slash-minus"></i>
-                                Quantidade
-                            </label>
-
-                            <input type="number" id="quantidadeProduto" class="form-control" min="1" value="1" required>
-                        </div>
-
-                        <div class="total-box">
-                            <span>Total da compra</span>
-                            <strong id="valorTotal">R$ 0,00</strong>
-                        </div>
-
-                        <button type="submit" class="btn btn-royale w-100 mt-4">
-                            <i class="bi bi-check-circle-fill"></i>
-                            Finalizar compra
-                        </button>
-                    </form>
-
-                    <div id="confirmacaoPedido" class="confirmation-box d-none">
-                        <div class="confirmation-icon">
-                            <i class="bi bi-check-lg"></i>
-                        </div>
-
-                        <h3>Pedido realizado!</h3>
-
-                        <p>
-                            Obrigado, <strong id="nomeConfirmado"></strong>.
-                        </p>
-
-                        <div class="receipt">
-                            <div>
-                                <span>Produto</span>
-                                <strong id="produtoConfirmado"></strong>
-                            </div>
-
-                            <div>
-                                <span>Quantidade</span>
-                                <strong id="quantidadeConfirmada"></strong>
-                            </div>
-
-                            <div>
-                                <span>Total</span>
-                                <strong id="totalConfirmado"></strong>
-                            </div>
-                        </div>
-
-                        <p class="receipt-warning">
-                            Este é um resumo da compra. A nota fiscal oficial depende de uma integração com sistema fiscal.
-                        </p>
-
-                        <div class="confirmation-actions">
-                            <button type="button" class="btn btn-outline-dark" onclick="window.print()">
-                                <i class="bi bi-printer-fill"></i>
-                                Imprimir
-                            </button>
-
-                            <button type="button" class="btn btn-royale" data-bs-dismiss="modal">
-                                Fechar
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
     </script>
 
 </body>
-
 </html>
