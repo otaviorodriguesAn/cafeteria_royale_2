@@ -1,3 +1,6 @@
+/* ==========================================
+   VARIÁVEIS GLOBAIS & RESET
+   ========================================== */
 :root {
     --marrom-escuro: #321b12;
     --marrom: #70452d;
@@ -9,6 +12,9 @@
     --texto: #3b2117;
     --branco: #ffffff;
     --cinza-texto: #6e625d;
+    --verde: #198754;
+    --vermelho: #dc3545;
+    --azul: #0d6efd;
 }
 
 * {
@@ -27,27 +33,38 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* HEADER */
+/* ==========================================
+   CABEÇALHO & NAVBAR
+   ========================================== */
 .site-header {
     position: relative;
     z-index: 1000;
     background-color: var(--marrom-escuro);
 }
 
-.site-header .navbar {
+.site-header .navbar,
+.navbar {
     min-height: 74px;
     padding: 0.65rem 0;
-    background-color: var(--marrom-escuro);
+    background-color: var(--marrom-escuro) !important;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
 }
 
-.site-header .navbar-brand {
+.site-header .navbar-brand,
+.navbar-brand {
     display: inline-flex;
     align-items: center;
     gap: 0.7rem;
     margin: 0;
     padding: 0;
-    color: var(--branco);
+    color: var(--branco) !important;
+    font-size: 1.35rem;
+    font-weight: 800;
     text-decoration: none;
+}
+
+.navbar-brand span {
+    color: var(--dourado);
 }
 
 .logo-wrapper {
@@ -85,10 +102,12 @@ body {
     gap: 0.45rem;
 }
 
-.site-header .nav-link {
+.site-header .nav-link,
+.nav-link {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
+    margin-left: 0.5rem;
     padding: 0.75rem 0.8rem !important;
     color: rgba(255, 255, 255, 0.88) !important;
     font-weight: 600;
@@ -96,7 +115,9 @@ body {
 }
 
 .site-header .nav-link:hover,
-.site-header .nav-link.active {
+.site-header .nav-link.active,
+.nav-link:hover,
+.nav-link.active {
     color: var(--dourado) !important;
 }
 
@@ -135,7 +156,9 @@ body {
     filter: brightness(0) invert(1);
 }
 
-/* CARROSSEL */
+/* ==========================================
+   CARROSSEL & HERO SECTION
+   ========================================== */
 .hero-section {
     background-color: #24140e;
 }
@@ -183,7 +206,9 @@ body {
     font-weight: 700;
 }
 
-/* BOTÕES */
+/* ==========================================
+   BOTÕES GLOBAIS
+   ========================================== */
 .btn-royale {
     display: inline-flex;
     align-items: center;
@@ -193,6 +218,7 @@ body {
     color: var(--marrom-escuro);
     background-color: var(--dourado);
     border: 1px solid var(--dourado);
+    border-radius: 10px;
     font-weight: 700;
     transition: all 0.3s ease;
 }
@@ -209,21 +235,35 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
+    padding: 0.75rem 1.4rem;
     color: var(--marrom);
-    border: 1px solid var(--marrom);
+    background-color: transparent;
+    border: 2px solid var(--dourado);
+    border-radius: 10px;
     font-weight: 700;
     transition: all 0.3s ease;
 }
 
 .btn-outline-royale:hover {
-    color: var(--branco);
-    background-color: var(--marrom);
-    border-color: var(--marrom);
+    color: var(--marrom);
+    background-color: var(--dourado);
 }
 
-/* PRODUTOS */
-.products-section {
-    background-color: var(--creme);
+/* ==========================================
+   SEÇÕES GERAIS
+   ========================================== */
+.section {
+    padding: 70px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title span {
+    color: var(--dourado);
+    font-weight: bold;
 }
 
 .section-heading h2 {
@@ -247,10 +287,19 @@ body {
     color: var(--marrom);
     background-color: var(--bege);
     border-radius: 50px;
+    font-size: 0.85rem;
     font-weight: 700;
 }
 
-.product-card {
+/* ==========================================
+   PRODUTOS & CARDS
+   ========================================== */
+.products-section {
+    background-color: var(--creme);
+}
+
+.product-card,
+.card-product {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -258,12 +307,14 @@ body {
     min-height: 475px;
     overflow: hidden;
     background-color: var(--branco);
+    border: none;
     border-radius: 18px;
     box-shadow: 0 8px 25px rgba(59, 33, 23, 0.12);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.product-card:hover {
+.product-card:hover,
+.card-product:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 32px rgba(59, 33, 23, 0.2);
 }
@@ -274,10 +325,11 @@ body {
     overflow: hidden;
 }
 
-.product-image img {
+.product-image img,
+.card-product img {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 225px;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
@@ -300,7 +352,8 @@ body {
     border-radius: 50%;
 }
 
-.product-content {
+.product-content,
+.card-product .card-body {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -339,13 +392,17 @@ body {
     margin-top: auto;
 }
 
-.product-footer strong {
+.product-footer strong,
+.price {
     color: var(--marrom);
-    font-size: 1.15rem;
+    font-size: 1.25rem;
+    font-weight: 800;
     white-space: nowrap;
 }
 
-/* SOBRE */
+/* ==========================================
+   SOBRE
+   ========================================== */
 .about-section {
     padding: 5rem 0;
     background: linear-gradient(180deg, var(--creme) 0%, #f7eadc 100%);
@@ -422,19 +479,97 @@ body {
     margin-top: 0.75rem;
 }
 
-/* PEDIDOS */
+/* ==========================================
+   LOCALIZAÇÃO E MAPA
+   ========================================== */
+.location-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background-color: #f8f9fa;
+}
+
+.map-container {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+    height: 380px;
+    border: none;
+}
+
+.location-section .bg-white {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.location-section h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1a1a1a;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.location-section h4 i {
+    color: #c59b27;
+}
+
+.location-section p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   ÁREA DE PEDIDOS & PAINEL DO CLIENTE
+   ========================================== */
+main {
+    min-height: 650px;
+    padding-top: 50px;
+    padding-bottom: 70px;
+}
+
 .orders-section {
     background-color: var(--creme);
 }
 
 .order-box {
     width: 100%;
-    max-width: 1050px;
-    margin: 0 auto;
-    padding: 3rem 1.5rem;
-    color: var(--branco);
-    background: linear-gradient(135deg, var(--marrom-escuro), var(--marrom));
-    border-radius: 24px;
+    max-width: 1150px;
+    margin: 30px auto;
+    padding: 40px;
+    background: var(--branco);
+    border-radius: 25px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e7ddd2;
+}
+
+.order-header h1 {
+    color: var(--marrom);
+    font-weight: 800;
+}
+
+.order-header p {
+    color: var(--cinza-texto);
 }
 
 .order-icon {
@@ -444,26 +579,134 @@ body {
     font-size: 2.5rem;
 }
 
-.order-box h2 {
-    margin-bottom: 0.75rem;
+/* RESUMO DO PEDIDO */
+.summary-card {
+    height: 100%;
+    padding: 22px;
+    background: var(--creme);
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+.summary-card i {
+    color: var(--dourado);
+    font-size: 30px;
+}
+
+.summary-card h3 {
+    margin-top: 10px;
+    margin-bottom: 3px;
     font-weight: 800;
 }
 
-.order-box p {
-    color: rgba(255, 255, 255, 0.82);
+.summary-card p {
+    margin: 0;
+    color: var(--cinza-texto);
 }
 
-/* RODAPÉ */
-.site-footer {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: var(--marrom-escuro);
+.current-order {
+    margin-top: 35px;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f3ec, #fff);
+    border: 1px solid #eadbca;
+    border-radius: 20px;
 }
 
-.site-footer strong {
+.current-order h3 {
+    font-weight: 800;
+}
+
+.product-name {
+    color: var(--marrom-claro);
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+/* TABELA DE PEDIDOS */
+.table-container {
+    margin-top: 40px;
+}
+
+.table-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.table-title h3 {
+    margin: 0;
+    font-weight: 800;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.table {
+    min-width: 900px;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.table thead th {
+    padding: 15px;
     color: var(--branco);
+    background: var(--marrom);
+    white-space: nowrap;
 }
 
-/* MODAL */
+.table tbody td {
+    padding: 15px;
+}
+
+.table tbody tr:hover {
+    background: #fffaf4;
+}
+
+/* STATUS */
+.status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.status-confirmado {
+    color: #0f5132;
+    background: #d1e7dd;
+}
+
+.status-pendente {
+    color: #664d03;
+    background: #fff3cd;
+}
+
+.status-cancelado {
+    color: #842029;
+    background: #f8d7da;
+}
+
+.empty-orders {
+    padding: 45px 20px;
+    text-align: center;
+    background: var(--creme);
+    border-radius: 18px;
+}
+
+.empty-orders i {
+    color: var(--dourado);
+    font-size: 55px;
+}
+
+/* ==========================================
+   MODAL DE PEDIDO
+   ========================================== */
 .order-modal {
     overflow: hidden;
     border: none;
@@ -613,8 +856,30 @@ body {
     flex: 1;
 }
 
-/* RESPONSIVIDADE */
-@media (max-width: 991px) {
+/* ==========================================
+   RODAPÉ / FOOTER
+   ========================================== */
+.site-footer,
+footer {
+    padding: 45px 0;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: var(--marrom-escuro);
+}
+
+.site-footer strong,
+footer h4 {
+    color: var(--branco);
+    font-weight: 800;
+}
+
+footer p {
+    color: #ddd3cb;
+}
+
+/* ==========================================
+   RESPONSIVIDADE & IMPRESSÃO
+   ========================================== */
+@media (max-width: 991.98px) {
     .site-header .navbar-collapse {
         padding-top: 1rem;
     }
@@ -631,6 +896,10 @@ body {
         width: 100%;
         margin-top: 0.75rem;
         text-align: center;
+    }
+
+    .map-container iframe {
+        height: 300px;
     }
 }
 
@@ -663,8 +932,8 @@ body {
 
     .about-image,
     .about-image img {
-        min-height: 280px;
         height: 280px;
+        min-height: 280px;
     }
 
     .about-content {
@@ -672,6 +941,20 @@ body {
     }
 
     .about-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .order-box {
+        margin: 20px auto;
+        padding: 25px 18px;
+    }
+
+    .table-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .order-header h1 {
         font-size: 1.8rem;
     }
 }
@@ -690,13 +973,14 @@ body {
         font-size: 1.05rem;
     }
 
-    .product-card {
+    .product-card,
+    .card-product {
         min-height: auto;
     }
 
     .product-footer {
-        align-items: stretch;
         flex-direction: column;
+        align-items: stretch;
     }
 
     .product-footer .btn {
@@ -742,480 +1026,3 @@ body {
         width: 100%;
     }
 }
-
-.location-section {
-    background-color: #f8f9fa;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-}
-
-/* Container responsivo do Mapa */
-.map-container {
-    position: relative;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    border: 1px solid #e2e8f0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.map-container:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 380px;
-    border: none;
-    display: block;
-}
-
-/* Cartão de Informações de Endereço e Horários */
-.location-section .bg-white {
-    background-color: #ffffff !important;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-}
-
-.location-section h4 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.location-section h4 i {
-    color: #c59b27; 
-}
-
-.location-section p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-.badge-royale {
-    background-color: #1a1a1a;
-    color: #c59b27;
-    border: 1px solid #c59b27;
-    padding: 0.5em 1em;
-    font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-/* Estilização Responsiva */
-@media (max-width: 991.98px) {
-    .map-container iframe {
-        height: 300px;
-    }
-}
- :root {
-            --cafe: #5b3a29;
-            --dourado: #c99a5b;
-            --creme: #f8f3ec;
-            --escuro: #211812;
-        }
-
-        body {
-            margin: 0;
-            background: var(--creme);
-            color: var(--escuro);
-            font-family: Arial, sans-serif;
-        }
-
-        .navbar {
-            background: var(--escuro) !important;
-        }
-
-        .navbar-brand {
-            font-weight: 800;
-            color: white !important;
-        }
-
-        .navbar-brand span {
-            color: var(--dourado);
-        }
-
-        .nav-link {
-            color: white !important;
-        }
-
-        .nav-link:hover {
-            color: var(--dourado) !important;
-        }
-
-        .section {
-            padding: 70px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title span {
-            color: var(--dourado);
-            font-weight: bold;
-        }
-
-        .card-product {
-            height: 100%;
-            border: none;
-            overflow: hidden;
-            border-radius: 18px;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
-        }
-
-        .card-product img {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-        }
-
-        .card-product .card-body {
-            padding: 25px;
-        }
-
-        .price {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--cafe);
-        }
-
-        .btn-royale {
-            background: var(--dourado);
-            color: var(--escuro);
-            font-weight: bold;
-            border: none;
-        }
-
-        .btn-royale:hover {
-            background: #e0b577;
-        }
-
-        footer {
-            background: var(--escuro);
-            color: white;
-            padding: 45px 0;
-        }
-    
-        :root {
-            --marrom: #211812;
-            --marrom-claro: #5b3a29;
-            --dourado: #c99a5b;
-            --dourado-claro: #e0b577;
-            --creme: #f8f3ec;
-            --branco: #ffffff;
-            --cinza: #6c625c;
-            --verde: #198754;
-            --vermelho: #dc3545;
-            --azul: #0d6efd;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            background: var(--creme);
-            color: var(--marrom);
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        /* ==============================
-           NAVBAR
-        ============================== */
-        .navbar {
-            background: var(--marrom) !important;
-            padding: 15px 0;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, .15);
-        }
-
-        .navbar-brand {
-            color: var(--branco) !important;
-            font-size: 1.35rem;
-            font-weight: 800;
-        }
-
-        .navbar-brand span {
-            color: var(--dourado);
-        }
-
-        .nav-link {
-            color: var(--branco) !important;
-            font-weight: 600;
-            margin-left: 10px;
-            transition: .3s;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--dourado) !important;
-        }
-
-        /* ==============================
-           ÁREA PRINCIPAL
-        ============================== */
-        main {
-            min-height: 650px;
-            padding-top: 50px;
-            padding-bottom: 70px;
-        }
-
-        .order-box {
-            max-width: 1150px;
-            margin: 30px auto;
-            background: var(--branco);
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, .10);
-        }
-
-        .order-header {
-            border-bottom: 1px solid #e7ddd2;
-            padding-bottom: 25px;
-            margin-bottom: 30px;
-        }
-
-        .order-header h1 {
-            font-weight: 800;
-            color: var(--marrom);
-        }
-
-        .order-header p {
-            color: var(--cinza);
-        }
-
-        /* ==============================
-           BADGE
-        ============================== */
-        .badge-royale {
-            display: inline-block;
-            background: var(--dourado);
-            color: var(--marrom);
-            font-weight: 800;
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: .75rem;
-        }
-
-        /* ==============================
-           CARDS DE RESUMO
-        ============================== */
-        .summary-card {
-            border: none;
-            border-radius: 18px;
-            padding: 22px;
-            height: 100%;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, .07);
-            background: var(--creme);
-        }
-
-        .summary-card i {
-            font-size: 30px;
-            color: var(--dourado);
-        }
-
-        .summary-card h3 {
-            font-weight: 800;
-            margin-top: 10px;
-            margin-bottom: 3px;
-        }
-
-        .summary-card p {
-            color: var(--cinza);
-            margin: 0;
-        }
-
-        /* ==============================
-           PEDIDO ATUAL
-        ============================== */
-        .current-order {
-            background: linear-gradient(135deg, #f8f3ec, #fff);
-            border: 1px solid #eadbca;
-            border-radius: 20px;
-            padding: 25px;
-            margin-top: 35px;
-        }
-
-        .current-order h3 {
-            font-weight: 800;
-        }
-
-        .product-name {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--marrom-claro);
-        }
-
-        .price {
-            color: var(--verde);
-            font-size: 1.3rem;
-            font-weight: 800;
-        }
-
-        /* ==============================
-           BOTÕES
-        ============================== */
-        .btn-royale {
-            background: var(--dourado);
-            color: var(--marrom);
-            border: none;
-            font-weight: 700;
-            border-radius: 10px;
-            padding: 10px 18px;
-            transition: .3s;
-        }
-
-        .btn-royale:hover {
-            background: var(--dourado-claro);
-            color: var(--marrom);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline-royale {
-            border: 2px solid var(--dourado);
-            color: var(--marrom);
-            font-weight: 700;
-            border-radius: 10px;
-            padding: 9px 18px;
-        }
-
-        .btn-outline-royale:hover {
-            background: var(--dourado);
-            color: var(--marrom);
-        }
-
-        /* ==============================
-           TABELA
-        ============================== */
-        .table-container {
-            margin-top: 40px;
-        }
-
-        .table-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .table-title h3 {
-            font-weight: 800;
-            margin: 0;
-        }
-
-        .table-responsive {
-            border-radius: 15px;
-            overflow-x: auto;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
-        }
-
-        .table {
-            margin: 0;
-            min-width: 900px;
-            vertical-align: middle;
-        }
-
-        .table thead th {
-            background: var(--marrom);
-            color: var(--branco);
-            padding: 15px;
-            white-space: nowrap;
-        }
-
-        .table tbody td {
-            padding: 15px;
-        }
-
-        .table tbody tr:hover {
-            background: #fffaf4;
-        }
-
-        /* ==============================
-           STATUS
-        ============================== */
-        .status {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: .78rem;
-            font-weight: 700;
-        }
-
-        .status-confirmado {
-            background: #d1e7dd;
-            color: #0f5132;
-        }
-
-        .status-pendente {
-            background: #fff3cd;
-            color: #664d03;
-        }
-
-        .status-cancelado {
-            background: #f8d7da;
-            color: #842029;
-        }
-
-        /* ==============================
-           ÁREA SEM PEDIDOS
-        ============================== */
-        .empty-orders {
-            text-align: center;
-            padding: 45px 20px;
-            background: var(--creme);
-            border-radius: 18px;
-        }
-
-        .empty-orders i {
-            font-size: 55px;
-            color: var(--dourado);
-        }
-
-        /* ==============================
-           FOOTER
-        ============================== */
-        footer {
-            background: var(--marrom);
-            color: var(--branco);
-            padding: 45px 0;
-        }
-
-        footer h4 {
-            font-weight: 800;
-        }
-
-        footer p {
-            color: #ddd3cb;
-        }
-
-        /* ==============================
-           RESPONSIVIDADE
-        ============================== */
-        @media (max-width: 768px) {
-            .order-box {
-                padding: 25px 18px;
-                margin: 20px auto;
-            }
-
-            .table-title {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .order-header h1 {
-                font-size: 1.8rem;
-            }
-        }
