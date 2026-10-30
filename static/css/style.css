@@ -1,5 +1,5 @@
 /* ==========================================
-   VARIÁVEIS GLOBAIS & RESET
+   1. VARIÁVEIS GLOBAIS & RESET
    ========================================== */
 :root {
     --marrom-escuro: #321b12;
@@ -19,6 +19,8 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -31,10 +33,11 @@ body {
     color: var(--texto);
     background-color: var(--creme);
     font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
 }
 
 /* ==========================================
-   CABEÇALHO & NAVBAR
+   2. CABEÇALHO & NAVBAR
    ========================================== */
 .site-header {
     position: relative;
@@ -157,7 +160,7 @@ body {
 }
 
 /* ==========================================
-   CARROSSEL & HERO SECTION
+   3. CARROSSEL & HERO SECTION
    ========================================== */
 .hero-section {
     background-color: #24140e;
@@ -207,7 +210,7 @@ body {
 }
 
 /* ==========================================
-   BOTÕES GLOBAIS
+   4. BOTÕES GLOBAIS
    ========================================== */
 .btn-royale {
     display: inline-flex;
@@ -221,6 +224,8 @@ body {
     border-radius: 10px;
     font-weight: 700;
     transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .btn-royale:hover {
@@ -242,6 +247,8 @@ body {
     border-radius: 10px;
     font-weight: 700;
     transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .btn-outline-royale:hover {
@@ -250,7 +257,7 @@ body {
 }
 
 /* ==========================================
-   SEÇÕES GERAIS
+   5. SEÇÕES GERAIS
    ========================================== */
 .section {
     padding: 70px 0;
@@ -292,7 +299,7 @@ body {
 }
 
 /* ==========================================
-   PRODUTOS & CARDS
+   6. PRODUTOS & CARDS
    ========================================== */
 .products-section {
     background-color: var(--creme);
@@ -401,7 +408,7 @@ body {
 }
 
 /* ==========================================
-   SOBRE
+   7. SOBRE
    ========================================== */
 .about-section {
     padding: 5rem 0;
@@ -480,7 +487,7 @@ body {
 }
 
 /* ==========================================
-   LOCALIZAÇÃO E MAPA
+   8. LOCALIZAÇÃO E MAPA
    ========================================== */
 .location-section {
     padding-top: 4rem;
@@ -535,7 +542,7 @@ body {
 }
 
 /* ==========================================
-   ÁREA DE PEDIDOS & PAINEL DO CLIENTE
+   9. ÁREA DE PEDIDOS & PAINEL DO CLIENTE
    ========================================== */
 main {
     min-height: 650px;
@@ -668,7 +675,7 @@ main {
     background: #fffaf4;
 }
 
-/* STATUS */
+/* STATUS DO PEDIDO */
 .status {
     display: inline-block;
     padding: 6px 12px;
@@ -705,7 +712,7 @@ main {
 }
 
 /* ==========================================
-   MODAL DE PEDIDO
+   10. MODAL DE PEDIDO
    ========================================== */
 .order-modal {
     overflow: hidden;
@@ -857,7 +864,7 @@ main {
 }
 
 /* ==========================================
-   RODAPÉ / FOOTER
+   11. RODAPÉ / FOOTER
    ========================================== */
 .site-footer,
 footer {
@@ -877,7 +884,7 @@ footer p {
 }
 
 /* ==========================================
-   RESPONSIVIDADE & IMPRESSÃO
+   12. RESPONSIVIDADE & IMPRESSÃO
    ========================================== */
 @media (max-width: 991.98px) {
     .site-header .navbar-collapse {
